@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+    <PerformanceCounters>
+        <UseBuiltIn>False</UseBuiltIn>
+        <Jmx>
+            <!-- CPU -->
+            <Add objectName="java.lang:type=OperatingSystem" attribute="ProcessCpuLoad" displayName="CPU Process Load" />
+            <Add objectName="java.lang:type=OperatingSystem" attribute="SystemCpuLoad" displayName="CPU System Load" />
+            <!-- Thread -->
+            <Add objectName="java.lang:type=Threading" attribute="ThreadCount" displayName="Thread Count" />
+
+            <!-- Memory -->
+            <Add objectName="java.lang:type=Memory" attribute="HeapMemoryUsage.used" displayName="MEM Heap Used" type="composite" />
+            <Add objectName="java.lang:type=Memory" attribute="HeapMemoryUsage.committed" displayName="MEM Heap Committed" type="composite" />
+
+            <Add objectName="java.lang:type=Memory" attribute="NonHeapMemoryUsage.used" displayName="MEM Non Heap Used" type="composite" />
+            <Add objectName="java.lang:type=Memory" attribute="NonHeapMemoryUsage.committed" displayName="MEM Non Heap Committed" type="composite" />
+
+            <!-- Memory(Metaspace) JVM 8 over -->
+            <Add objectName="java.lang:type=MemoryPool,name=Metaspace" attribute="Usage.used" displayName="MEM Metaspace Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=Metaspace" attribute="Usage.committed" displayName="MEM Metaspace Committed" type="composite" />
+
+            <!-- Memory(PS) -->
+            <Add objectName="java.lang:type=MemoryPool,name=PS Eden Space" attribute="Usage.used" displayName="MEM(PS) New Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=PS Eden Space" attribute="Usage.committed" displayName="MEM(PS) New Committed" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=PS Survivor Space" attribute="Usage.used" displayName="MEM(PS) Survivor Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=PS Survivor Space" attribute="Usage.committed" displayName="MEM(PS) Survivor Committed" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=PS Old Gen" attribute="Usage.used" displayName="MEM(PS) Old Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=PS Old Gen" attribute="Usage.committed" displayName="MEM(PS) Old Committed" type="composite" />
+            <!-- GC(PS) -->
+            <Add objectName="java.lang:type=GarbageCollector,name=PS MarkSweep" attribute="CollectionCount" displayName="FGC - Count" />
+            <Add objectName="java.lang:type=GarbageCollector,name=PS MarkSweep" attribute="CollectionTime" displayName="FGC - Time" />
+            <Add objectName="java.lang:type=GarbageCollector,name=PS Scavenge" attribute="CollectionTime" displayName="YGC - Time" />
+            <Add objectName="java.lang:type=GarbageCollector,name=PS Scavenge" attribute="CollectionCount" displayName="YGC - Count" />
+
+            <!-- Memory(CMS) -XX:+UseConcMarkSweepGC -->
+            <Add objectName="java.lang:type=MemoryPool,name=Par Eden Space" attribute="Usage.used" displayName="MEM(CMS) New Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=Par Eden Space" attribute="Usage.committed" displayName="MEM(CMS) New Committed" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=Par Survivor Space" attribute="Usage.used" displayName="MEM(CMS) Survivor Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=Par Survivor Space" attribute="Usage.committed" displayName="MEM(CMS) Survivor Committed" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=CMS Old Gen" attribute="Usage.used" displayName="MEM(CMS) Old Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=CMS Old Gen" attribute="Usage.committed" displayName="MEM(CMS) Old Committed" type="composite" />
+            <!-- GC(CMS) -->
+            <Add objectName="java.lang:type=GarbageCollector,name=ConcurrentMarkSweep" attribute="CollectionCount" displayName="FGC(CMS) Count" />
+            <Add objectName="java.lang:type=GarbageCollector,name=ConcurrentMarkSweep" attribute="CollectionTime" displayName="FGC(CMS) Time" />
+            <Add objectName="java.lang:type=GarbageCollector,name=ParNew" attribute="CollectionTime" displayName="YGC(CMS) Time" />
+            <Add objectName="java.lang:type=GarbageCollector,name=ParNew" attribute="CollectionCount" displayName="YGC(CMS) Count" />
+
+            <!-- Memory(G1GC) -XX:+UseG1GC -->
+            <Add objectName="java.lang:type=MemoryPool,name=G1 Eden Space" attribute="Usage.used" displayName="MEM(G1) New Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=G1 Eden Space" attribute="Usage.committed" displayName="MEM(G1) New Committed" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=G1 Survivor Space" attribute="Usage.used" displayName="MEM(G1) Survivor Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=G1 Survivor Space" attribute="Usage.committed" displayName="MEM(G1) Survivor Committed" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=G1 Old Gen" attribute="Usage.used" displayName="MEM(G1) Old Used" type="composite" />
+            <Add objectName="java.lang:type=MemoryPool,name=G1 Old Gen" attribute="Usage.committed" displayName="MEM(G1) Old Committed" type="composite" />
+            <!-- GC(G1GC) -->
+            <Add objectName="java.lang:type=GarbageCollector,name=G1 Young Generation" attribute="CollectionCount" displayName="YGC(G1) Count" />
+            <Add objectName="java.lang:type=GarbageCollector,name=G1 Young Generation" attribute="CollectionTime" displayName="YGC(G1) Time" />
+            <Add objectName="java.lang:type=GarbageCollector,name=G1 Old Generation" attribute="CollectionTime" displayName="FGC(G1) Time" />
+            <Add objectName="java.lang:type=GarbageCollector,name=G1 Old Generation" attribute="CollectionCount" displayName="FGC(G1) Count" />
+        </Jmx>
+    </PerformanceCounters>
+</ApplicationInsights>
